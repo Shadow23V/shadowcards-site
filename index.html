@@ -16,26 +16,51 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
     }
 
     h1 {
       font-size: 3rem;
       letter-spacing: 2px;
+      margin: 0;
     }
 
     p {
       opacity: 0.8;
       margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .promo {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 
 <body>
-  <div>
+  <div class="container">
     <h1>SHADOW CARDS</h1>
     <p>New drops coming soon.</p>
+
+    <img
+      src="promo.png"
+      alt="Shadow Cards promo image"
+      class="promo"
+    />
   </div>
 </body>
 </html>
