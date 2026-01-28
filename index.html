@@ -22,9 +22,9 @@
       color: var(--text);
     }
 
-    /* NEW: background image for the whole site */
+    /* UPDATED: main site background */
     body {
-      background-image: url("backround.png");
+      background-image: url("background.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -57,7 +57,6 @@
       border-radius: 18px;
       padding: 16px;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 14px 60px rgba(0,0,0,0.65);
     }
 
@@ -82,7 +81,7 @@
       font-size: 0.95rem;
     }
 
-    /* PROMO SECTION */
+    /* PROMO */
     .promoCard {
       border: 1px solid var(--borderOrange);
       box-shadow:
@@ -99,7 +98,7 @@
       box-shadow: 0 0 30px rgba(255,60,0,0.22);
     }
 
-    /* COUNTDOWN SECTION (smaller, its own panel) */
+    /* COUNTDOWN */
     .countdownRow {
       display: flex;
       align-items: center;
@@ -134,7 +133,7 @@
     }
 
     .num {
-      font-size: 1.45rem; /* smaller than before */
+      font-size: 1.45rem;
       font-weight: 900;
       color: #fff;
       text-shadow: 0 0 12px rgba(0,255,255,0.25);
@@ -158,7 +157,7 @@
       white-space: nowrap;
     }
 
-    /* LINKS SECTION (OpenSea + Twitch) */
+    /* LINKS */
     .links {
       display: flex;
       gap: 12px;
@@ -184,7 +183,6 @@
       box-shadow: 0 0 22px rgba(0,255,255,0.25);
     }
 
-    /* mobile */
     @media (max-width: 700px) {
       .header { flex-direction: column; align-items: flex-start; }
       .links { justify-content: flex-start; }
@@ -209,19 +207,18 @@
           View on OpenSea
         </a>
 
-        <!-- CHANGE THIS to your Twitch link -->
-        <a class="btn secondary" href="https://twitch.tv/YOUR_TWITCH_NAME" target="_blank" rel="noopener noreferrer">
+        <a class="btn secondary" href="https://www.twitch.tv/shadow23v" target="_blank" rel="noopener noreferrer">
           Watch on Twitch
         </a>
       </div>
     </section>
 
-    <!-- PROMO IMAGE SECTION -->
+    <!-- PROMO -->
     <section class="panel promoCard">
       <img class="promoImg" src="promo.png" alt="ShadowCards Promo" />
     </section>
 
-    <!-- COUNTDOWN SECTION (small + clear) -->
+    <!-- COUNTDOWN -->
     <section class="panel">
       <div class="countdownRow">
         <div>
@@ -229,23 +226,11 @@
           <div class="tagline" style="margin-top:6px;">Resets every Monday at 12:00 AM (local time)</div>
         </div>
 
-        <div class="units" aria-label="Countdown timer">
-          <div class="unit">
-            <div class="num" id="d">--</div>
-            <div class="lbl">Days</div>
-          </div>
-          <div class="unit">
-            <div class="num" id="h">--</div>
-            <div class="lbl">Hours</div>
-          </div>
-          <div class="unit">
-            <div class="num" id="m">--</div>
-            <div class="lbl">Minutes</div>
-          </div>
-          <div class="unit">
-            <div class="num" id="s">--</div>
-            <div class="lbl">Seconds</div>
-          </div>
+        <div class="units">
+          <div class="unit"><div class="num" id="d">--</div><div class="lbl">Days</div></div>
+          <div class="unit"><div class="num" id="h">--</div><div class="lbl">Hours</div></div>
+          <div class="unit"><div class="num" id="m">--</div><div class="lbl">Minutes</div></div>
+          <div class="unit"><div class="num" id="s">--</div><div class="lbl">Seconds</div></div>
         </div>
 
         <div class="status" id="status">RESET INCOMING</div>
@@ -254,11 +239,10 @@
   </main>
 
   <script>
-    // Next Monday at 12:00 AM (local time)
     function nextMondayLocalMidnight() {
       const now = new Date();
-      const day = now.getDay(); // Sun=0, Mon=1
-      const diff = (8 - day) % 7 || 7; // days until next Monday
+      const day = now.getDay();
+      const diff = (8 - day) % 7 || 7;
       const monday = new Date(now);
       monday.setDate(now.getDate() + diff);
       monday.setHours(0, 0, 0, 0);
@@ -281,15 +265,10 @@
       if (diff < 0) diff += 7 * 86400000;
 
       const t = Math.floor(diff / 1000);
-      const days = Math.floor(t / 86400);
-      const hours = Math.floor((t % 86400) / 3600);
-      const mins = Math.floor((t % 3600) / 60);
-      const secs = t % 60;
-
-      el.d.textContent = days;
-      el.h.textContent = pad(hours);
-      el.m.textContent = pad(mins);
-      el.s.textContent = pad(secs);
+      el.d.textContent = Math.floor(t / 86400);
+      el.h.textContent = pad(Math.floor((t % 86400) / 3600));
+      el.m.textContent = pad(Math.floor((t % 3600) / 60));
+      el.s.textContent = pad(t % 60);
 
       el.status.textContent =
         t < 3600 ? "RESET IMMINENT" :
