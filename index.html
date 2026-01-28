@@ -13,17 +13,12 @@
   <style>
     :root{
       --glass: rgba(0,0,0,0.66);
-      --glass2: rgba(0,0,0,0.55);
-
       --text: #e6e6eb;
       --muted: rgba(230,230,235,0.75);
 
       --borderCyan: rgba(0,255,255,0.22);
       --borderOrange: rgba(255,90,0,0.34);
       --borderPurple: rgba(180,77,255,0.28);
-
-      --glowOrange: rgba(255,90,0,0.18);
-      --glowPurple: rgba(180,77,255,0.14);
 
       --radius: 18px;
       --radiusIn: 14px;
@@ -55,7 +50,7 @@
     .veil {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.20), rgba(0,0,0,0.90));
+      background: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
       pointer-events: none;
       z-index: 0;
     }
@@ -79,7 +74,7 @@
       box-shadow: 0 14px 60px rgba(0,0,0,0.65);
     }
 
-    /* ===== TOP BAR ===== */
+    /* TOP BAR */
     .topbar {
       display: flex;
       align-items: center;
@@ -100,8 +95,6 @@
       border-radius: 12px;
       object-fit: cover;
       border: 1px solid rgba(0,255,255,0.16);
-      box-shadow: 0 0 18px rgba(0,255,255,0.10);
-      background: rgba(0,0,0,0.35);
     }
 
     .brandName {
@@ -110,14 +103,11 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       font-size: 1.1rem;
-      text-shadow: 0 0 14px rgba(0,255,255,0.26);
-      line-height: 1.1;
     }
 
     .nav {
       display: flex;
       gap: 10px;
-      flex-wrap: wrap;
     }
 
     .nav a {
@@ -127,15 +117,8 @@
       font-size: 0.9rem;
       padding: 10px 14px;
       border-radius: 14px;
-      background: rgba(0,0,0,0.30);
-      border: 1px solid rgba(0,255,255,0.10);
-      transition: 0.18s ease;
-    }
-
-    .nav a:hover {
-      background: rgba(0,0,0,0.46);
-      border-color: rgba(0,255,255,0.18);
-      transform: translateY(-1px);
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0,255,255,0.1);
     }
 
     .btn {
@@ -146,44 +129,35 @@
       color: #0b0b0f;
       background: linear-gradient(135deg, #ff6a00, #ff2a00);
       box-shadow: 0 0 22px rgba(255,100,0,0.35);
-      transition: 0.18s ease;
     }
-
-    .btn:hover { transform: translateY(-1px); }
 
     .btnOutline {
       color: rgba(230,230,235,0.92);
       background: rgba(0,0,0,0.34);
-      border: 1px solid rgba(0,255,255,0.20);
-      box-shadow: inset 0 0 18px rgba(0,255,255,0.10);
+      border: 1px solid rgba(0,255,255,0.2);
     }
 
     .btnTwitch {
       background: linear-gradient(135deg, #7a2bff, #ff3fb4);
-      box-shadow: 0 0 22px rgba(180,77,255,0.28);
       color: #0b0b0f;
     }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .promoCard {
       border: 1px solid var(--borderOrange);
-      box-shadow:
-        0 0 24px rgba(255,90,0,0.18),
-        0 16px 70px rgba(0,0,0,0.75);
       padding: 14px;
     }
 
     .promoImg {
       width: 100%;
       border-radius: var(--radiusIn);
-      border: 1px solid rgba(255,90,0,0.28);
     }
 
-    /* ===== SECTIONS ===== */
+    /* SECTIONS */
     .sectionHead {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -193,21 +167,14 @@
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
-      margin: 0;
       font-size: 1rem;
+      margin: 0;
     }
 
-    .zoneCards {
-      border-color: var(--borderOrange);
-      box-shadow: 0 0 30px var(--glowOrange), 0 14px 60px rgba(0,0,0,0.65);
-    }
+    .zoneCards { border-color: var(--borderOrange); }
+    .zoneTwitch { border-color: var(--borderPurple); }
 
-    .zoneTwitch {
-      border-color: var(--borderPurple);
-      box-shadow: 0 0 30px var(--glowPurple), 0 14px 60px rgba(0,0,0,0.65);
-    }
-
-    /* ===== COUNTDOWN ===== */
+    /* COUNTDOWN */
     .countdownRow {
       display: flex;
       justify-content: space-between;
@@ -242,19 +209,10 @@
       opacity: 0.8;
     }
 
-    .status {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,90,0,0.35);
-      font-weight: 900;
-      font-size: 0.8rem;
-    }
-
     .footer {
       text-align: center;
       opacity: 0.6;
       font-size: 0.85rem;
-      margin-top: 6px;
     }
   </style>
 </head>
@@ -288,8 +246,14 @@
   <section class="panel zoneCards" id="cards">
     <div class="sectionHead">
       <h3 class="sectionTitle">ShadowCards</h3>
-      <div>
-        <a class="btn" href="https://opensea.io/collection/shadowcards" target="_blank">OpenSea Collection</a>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <a class="btn"
+           href="https://opensea.io/collection/shadowcards"
+           target="_blank">
+          OpenSea Collection
+        </a>
+
         <a class="btn btnOutline"
            href="https://opensea.io/item/avalanche/0x2db242c6b4e9abe6d88530370bba54e7eab4eaf4/4"
            target="_blank">
@@ -310,8 +274,6 @@
         <div class="unit"><div class="num" id="m">--</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="s">--</div><div class="lbl">Seconds</div></div>
       </div>
-
-      <div class="status" id="status">RESET INCOMING</div>
     </div>
   </section>
 
@@ -319,9 +281,11 @@
   <section class="panel zoneTwitch" id="twitch">
     <div class="sectionHead">
       <h3 class="sectionTitle">Twitch</h3>
-      <div>
-        <a class="btn btnTwitch" href="https://www.twitch.tv/shadow23v" target="_blank">Watch on Twitch</a>
-      </div>
+      <a class="btn btnTwitch"
+         href="https://www.twitch.tv/shadow23v"
+         target="_blank">
+        Watch on Twitch
+      </a>
     </div>
   </section>
 
@@ -349,10 +313,6 @@
     document.getElementById("h").textContent = pad(Math.floor((t%86400)/3600));
     document.getElementById("m").textContent = pad(Math.floor((t%3600)/60));
     document.getElementById("s").textContent = pad(t%60);
-    document.getElementById("status").textContent =
-      t < 3600 ? "RESET IMMINENT" :
-      t < 86400 ? "RESET TODAY" :
-      "RESET INCOMING";
   }
 
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -362,4 +322,3 @@
 
 </body>
 </html>
-
