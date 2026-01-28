@@ -2,27 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ShadowCards</title>
+  <title>ShadowCards — Brand Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts: Orbitron for headings, Inter for UI/body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --glass: rgba(0,0,0,0.65);
-      --borderCyan: rgba(0,255,255,0.28);
-      --borderOrange: rgba(255,90,0,0.35);
+      --glass: rgba(0,0,0,0.66);
+      --glass2: rgba(0,0,0,0.58);
+
       --text: #e6e6eb;
+      --muted: rgba(230,230,235,0.75);
+
+      --borderCyan: rgba(0,255,255,0.22);
+      --borderOrange: rgba(255,90,0,0.34);
+      --borderPurple: rgba(180,77,255,0.28);
+
+      --glowOrange: rgba(255,90,0,0.18);
+      --glowCyan: rgba(0,255,255,0.12);
+      --glowPurple: rgba(180,77,255,0.14);
+
+      --radius: 18px;
+      --radiusIn: 14px;
+
+      --hFont: "Orbitron", system-ui, sans-serif;
+      --uiFont: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       min-height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: var(--uiFont);
       color: var(--text);
     }
 
-    /* UPDATED: main site background */
     body {
       background-image: url("background.png");
       background-size: cover;
@@ -32,11 +53,10 @@
       background-color: #000;
     }
 
-    /* Helps readability on busy backgrounds */
     .veil {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.25), rgba(0,0,0,0.85));
+      background: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.20), rgba(0,0,0,0.90));
       pointer-events: none;
       z-index: 0;
     }
@@ -44,61 +64,169 @@
     .wrap {
       position: relative;
       z-index: 1;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 28px 16px 60px;
+      padding: 22px 16px 64px;
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
     .panel {
       background: var(--glass);
       border: 1px solid var(--borderCyan);
-      border-radius: 18px;
+      border-radius: var(--radius);
       padding: 16px;
       backdrop-filter: blur(10px);
       box-shadow: 0 14px 60px rgba(0,0,0,0.65);
     }
 
-    /* HEADER */
-    .header {
+    /* ===== TOP BAR ===== */
+    .topbar {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .brand {
-      font-weight: 900;
+    .brandRow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 240px;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid rgba(0,255,255,0.16);
+      box-shadow: 0 0 18px rgba(0,255,255,0.10);
+      background: rgba(0,0,0,0.35);
+    }
+
+    .brandText { display: grid; gap: 2px; }
+
+    .brandName {
+      font-family: var(--hFont);
+      font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      font-size: 1.2rem;
-      text-shadow: 0 0 14px rgba(0,255,255,0.35);
+      font-size: 1.05rem;
+      text-shadow: 0 0 14px rgba(0,255,255,0.26);
+      line-height: 1.1;
     }
 
     .tagline {
-      opacity: 0.85;
+      color: var(--muted);
       font-size: 0.95rem;
     }
 
-    /* PROMO */
+    /* Just TWO nav items */
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: rgba(230,230,235,0.88);
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.30);
+      border: 1px solid rgba(0,255,255,0.10);
+      transition: 0.18s ease;
+      white-space: nowrap;
+    }
+    .nav a:hover {
+      background: rgba(0,0,0,0.46);
+      border-color: rgba(0,255,255,0.18);
+      transform: translateY(-1px);
+    }
+
+    .topCTA {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      color: #0b0b0f;
+      background: linear-gradient(135deg, #ff6a00, #ff2a00);
+      box-shadow: 0 0 22px rgba(255,100,0,0.35);
+      white-space: nowrap;
+      transition: 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .btnOutline {
+      color: rgba(230,230,235,0.92);
+      background: rgba(0,0,0,0.34);
+      border: 1px solid rgba(0,255,255,0.20);
+      box-shadow: inset 0 0 18px rgba(0,255,255,0.10);
+    }
+
+    .btnTwitch {
+      background: linear-gradient(135deg, #7a2bff, #ff3fb4);
+      box-shadow: 0 0 22px rgba(180,77,255,0.28);
+      color: #0b0b0f;
+    }
+
+    /* ===== HERO PROMO ===== */
     .promoCard {
       border: 1px solid var(--borderOrange);
       box-shadow:
         0 0 24px rgba(255,90,0,0.18),
         0 0 40px rgba(0,255,255,0.10),
         0 16px 70px rgba(0,0,0,0.75);
+      padding: 14px;
     }
 
     .promoImg {
       width: 100%;
       display: block;
-      border-radius: 14px;
+      border-radius: var(--radiusIn);
       border: 1px solid rgba(255,90,0,0.28);
       box-shadow: 0 0 30px rgba(255,60,0,0.22);
     }
 
-    /* COUNTDOWN */
+    .heroText {
+      margin-top: 12px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .heroTitle {
+      font-family: var(--hFont);
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .heroSub {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    /* ===== COUNTDOWN ===== */
     .countdownRow {
       display: flex;
       align-items: center;
@@ -108,11 +236,12 @@
     }
 
     .countTitle {
-      font-weight: 900;
+      font-family: var(--hFont);
+      font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
       font-size: 0.95rem;
-      opacity: 0.95;
+      margin: 0;
     }
 
     .units {
@@ -145,6 +274,8 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       opacity: 0.9;
+      color: var(--muted);
+      font-weight: 800;
     }
 
     .status {
@@ -155,38 +286,97 @@
       background: rgba(0,0,0,0.55);
       box-shadow: 0 0 18px rgba(255,90,0,0.14);
       white-space: nowrap;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
     }
 
-    /* LINKS */
-    .links {
+    /* ===== TWO MAIN PILLARS ===== */
+    .sectionHead {
       display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items: center;
+      margin-bottom: 8px;
     }
 
-    .btn {
-      text-decoration: none;
-      padding: 12px 16px;
-      border-radius: 14px;
+    .sectionTitle {
+      font-family: var(--hFont);
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .sectionDesc {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+      max-width: 70ch;
+    }
+
+    .zoneCards {
+      border-color: var(--borderOrange);
+      box-shadow: 0 0 30px var(--glowOrange), 0 14px 60px rgba(0,0,0,0.65);
+    }
+
+    .zoneTwitch {
+      border-color: var(--borderPurple);
+      box-shadow: 0 0 30px var(--glowPurple), 0 14px 60px rgba(0,0,0,0.65);
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .cardMini {
+      background: var(--glass2);
+      border: 1px solid rgba(0,255,255,0.14);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: inset 0 0 18px rgba(0,255,255,0.08);
+    }
+
+    .cardMini h4 {
+      margin: 0 0 6px;
       font-weight: 900;
-      letter-spacing: 0.4px;
-      color: #0b0b0f;
-      background: linear-gradient(135deg, #ff6a00, #ff2a00);
-      box-shadow: 0 0 22px rgba(255,100,0,0.35);
-      white-space: nowrap;
+      letter-spacing: 0.2px;
+      font-size: 0.98rem;
     }
 
-    .btn.secondary {
-      background: linear-gradient(135deg, #00ffff, #ff00aa);
-      box-shadow: 0 0 22px rgba(0,255,255,0.25);
+    .cardMini p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.92rem;
     }
 
-    @media (max-width: 700px) {
-      .header { flex-direction: column; align-items: flex-start; }
-      .links { justify-content: flex-start; }
+    .btnRow {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .footer {
+      color: rgba(230,230,235,0.60);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 6px 0 0;
+    }
+
+    @media (max-width: 820px) {
+      .grid3 { grid-template-columns: 1fr; }
       .unit { min-width: 84px; }
+      .nav { justify-content: flex-start; }
+      .btnRow { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -194,39 +384,51 @@
 <body>
   <div class="veil"></div>
 
-  <main class="wrap">
-    <!-- HEADER -->
-    <section class="panel header">
-      <div>
-        <div class="brand">SHADOWCARDS</div>
-        <div class="tagline">Weekly drops • Monday reset</div>
+  <main class="wrap" id="home">
+
+    <!-- TOP BAR -->
+    <section class="panel topbar">
+      <div class="brandRow">
+        <img class="logo" src="Logo.png" alt="ShadowCards Logo" onerror="this.style.display='none'">
+        <div class="brandText">
+          <div class="brandName">SHADOWCARDS</div>
+          <div class="tagline">Weekly drops • Monday reset</div>
+        </div>
       </div>
 
-      <div class="links">
-        <a class="btn" href="https://opensea.io/collection/shadowcards" target="_blank" rel="noopener noreferrer">
-          View on OpenSea
-        </a>
+      <!-- Only two main nav options -->
+      <nav class="nav" aria-label="Site navigation">
+        <a href="#cards">ShadowCards</a>
+        <a href="#twitch">Twitch</a>
+      </nav>
 
-        <a class="btn secondary" href="https://www.twitch.tv/shadow23v" target="_blank" rel="noopener noreferrer">
-          Watch on Twitch
-        </a>
+      <!-- Optional: one main CTA + one secondary -->
+      <div class="topCTA">
+        <a class="btn" href="#cards">Explore Cards</a>
+        <a class="btn btnOutline" href="#twitch">Go to Twitch</a>
       </div>
     </section>
 
-    <!-- PROMO -->
+    <!-- HERO PROMO -->
     <section class="panel promoCard">
       <img class="promoImg" src="promo.png" alt="ShadowCards Promo" />
+      <div class="heroText">
+        <h2 class="heroTitle">The ShadowCards Hub</h2>
+        <p class="heroSub">
+          Two pillars. One brand. ShadowCards is the collection side — Twitch is the live community side.
+        </p>
+      </div>
     </section>
 
     <!-- COUNTDOWN -->
-    <section class="panel">
+    <section class="panel" id="drops">
       <div class="countdownRow">
         <div>
-          <div class="countTitle">Countdown to Monday Reset</div>
+          <p class="countTitle">Countdown to Monday Reset</p>
           <div class="tagline" style="margin-top:6px;">Resets every Monday at 12:00 AM (local time)</div>
         </div>
 
-        <div class="units">
+        <div class="units" aria-label="Countdown timer">
           <div class="unit"><div class="num" id="d">--</div><div class="lbl">Days</div></div>
           <div class="unit"><div class="num" id="h">--</div><div class="lbl">Hours</div></div>
           <div class="unit"><div class="num" id="m">--</div><div class="lbl">Minutes</div></div>
@@ -236,15 +438,89 @@
         <div class="status" id="status">RESET INCOMING</div>
       </div>
     </section>
+
+    <!-- SHADOWCARDS PILLAR -->
+    <section class="panel zoneCards" id="cards">
+      <div class="sectionHead">
+        <div>
+          <h3 class="sectionTitle">ShadowCards</h3>
+          <p class="sectionDesc">
+            This is the card side of the brand: collection links, weekly drops, and your main “ShadowCards” identity.
+          </p>
+        </div>
+
+        <div class="btnRow">
+          <a class="btn" href="https://opensea.io/collection/shadowcards" target="_blank" rel="noopener noreferrer">
+            OpenSea Collection
+          </a>
+          <a class="btn btnOutline" href="#" target="_blank" rel="noopener noreferrer">
+            Latest Drop Page
+          </a>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="cardMini">
+          <h4>Weekly Drops</h4>
+          <p>Use the reset timer as your “drop ritual” — people learn to check in every week.</p>
+        </div>
+        <div class="cardMini">
+          <h4>Past Drops</h4>
+          <p>Add 3–6 past drops here later for proof + hype + a sense of history.</p>
+        </div>
+        <div class="cardMini">
+          <h4>Variants</h4>
+          <p>Animated / holographic versions can be highlighted here without cluttering the hero.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TWITCH PILLAR -->
+    <section class="panel zoneTwitch" id="twitch">
+      <div class="sectionHead">
+        <div>
+          <h3 class="sectionTitle">Twitch</h3>
+          <p class="sectionDesc">
+            This is the live side: reveals, watch parties, behind-the-scenes, and community moments.
+          </p>
+        </div>
+
+        <div class="btnRow">
+          <a class="btn btnTwitch" href="https://www.twitch.tv/shadow23v" target="_blank" rel="noopener noreferrer">
+            Watch on Twitch
+          </a>
+          <a class="btn btnOutline" href="#" target="_blank" rel="noopener noreferrer">
+            Stream Schedule
+          </a>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="cardMini">
+          <h4>Live Reveals</h4>
+          <p>Weekly reveal streams can be the “main event” that supports the drop schedule.</p>
+        </div>
+        <div class="cardMini">
+          <h4>Behind the Scenes</h4>
+          <p>Short clips/process talk makes the brand feel alive without relying on sales.</p>
+        </div>
+        <div class="cardMini">
+          <h4>Community Events</h4>
+          <p>Giveaways, collabs, themed nights — all live here, separate from the card pillar.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="year"></span> ShadowCards</div>
   </main>
 
   <script>
     function nextMondayLocalMidnight() {
       const now = new Date();
-      const day = now.getDay();
-      const diff = (8 - day) % 7 || 7;
+      const day = now.getDay(); // 0=Sun ... 1=Mon
+      const diffDays = (8 - day) % 7 || 7; // always next Monday
       const monday = new Date(now);
-      monday.setDate(now.getDate() + diff);
+      monday.setDate(now.getDate() + diffDays);
       monday.setHours(0, 0, 0, 0);
       return monday;
     }
@@ -254,7 +530,8 @@
       h: document.getElementById("h"),
       m: document.getElementById("m"),
       s: document.getElementById("s"),
-      status: document.getElementById("status")
+      status: document.getElementById("status"),
+      year: document.getElementById("year")
     };
 
     function pad(n) { return String(n).padStart(2, "0"); }
@@ -262,20 +539,26 @@
     function tick() {
       const now = new Date();
       let diff = nextMondayLocalMidnight() - now;
-      if (diff < 0) diff += 7 * 86400000;
+      if (diff < 0) diff = 0;
 
       const t = Math.floor(diff / 1000);
-      el.d.textContent = Math.floor(t / 86400);
-      el.h.textContent = pad(Math.floor((t % 86400) / 3600));
-      el.m.textContent = pad(Math.floor((t % 3600) / 60));
-      el.s.textContent = pad(t % 60);
+      const days = Math.floor(t / 86400);
+      const hours = Math.floor((t % 86400) / 3600);
+      const mins = Math.floor((t % 3600) / 60);
+      const secs = t % 60;
+
+      el.d.textContent = days;
+      el.h.textContent = pad(hours);
+      el.m.textContent = pad(mins);
+      el.s.textContent = pad(secs);
 
       el.status.textContent =
-        t < 3600 ? "RESET IMMINENT" :
-        t < 86400 ? "RESET TODAY" :
+        t <= 3600 ? "RESET IMMINENT" :
+        t <= 86400 ? "RESET TODAY" :
         "RESET INCOMING";
     }
 
+    el.year.textContent = new Date().getFullYear();
     tick();
     setInterval(tick, 1000);
   </script>
