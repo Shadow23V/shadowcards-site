@@ -4,39 +4,29 @@
   <meta charset="UTF-8" />
   <title>Shadow23-V — Brand Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --glass: rgba(0,0,0,0.66);
-      --text: #e6e6eb;
-      --muted: rgba(230,230,235,0.75);
-
-      --borderCyan: rgba(0,255,255,0.22);
-      --borderOrange: rgba(255,90,0,0.34);
-      --borderPurple: rgba(180,77,255,0.28);
-
+    :root {
+      --red: #ff1a1a;
+      --red-glow: rgba(255,26,26,0.25);
+      --red-border: rgba(255,26,26,0.28);
+      --glass: rgba(10,0,0,0.72);
+      --text: #e8e0e0;
+      --muted: rgba(232,224,224,0.6);
+      --gold: #ffd700;
       --radius: 18px;
       --radiusIn: 14px;
-
-      --hFont: "Orbitron", system-ui, sans-serif;
-      --uiFont: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --hFont: "Orbitron", sans-serif;
+      --uiFont: "Exo 2", system-ui, sans-serif;
+      --monoFont: "Share Tech Mono", monospace;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      font-family: var(--uiFont);
-      color: var(--text);
-    }
+    html, body { width: 100%; min-height: 100%; font-family: var(--uiFont); color: var(--text); scroll-behavior: smooth; }
 
     body {
       background-image: url("background.png");
@@ -44,179 +34,218 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-color: #000;
+      background-color: #080000;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 4px);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,26,26,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,26,26,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .veil {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
+      background: radial-gradient(circle at 50% 30%, rgba(80,0,0,0.18), rgba(0,0,0,0.92));
       pointer-events: none;
       z-index: 0;
     }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #080000; }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
 
     .wrap {
       position: relative;
       z-index: 1;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 22px 16px 64px;
+      padding: 20px 16px 64px;
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
 
     .panel {
       background: var(--glass);
-      border: 1px solid var(--borderCyan);
+      border: 1px solid var(--red-border);
       border-radius: var(--radius);
-      padding: 16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 14px 60px rgba(0,0,0,0.65);
+      padding: 18px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 14px 60px rgba(0,0,0,0.7);
     }
 
-    /* TOP BAR */
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .brandRow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    /* NAV */
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .brandRow { display: flex; align-items: center; gap: 12px; }
 
     .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 1px solid rgba(0,255,255,0.16);
+      width: 46px; height: 46px; border-radius: 12px; object-fit: cover;
+      border: 1px solid rgba(255,26,26,0.3);
+      box-shadow: 0 0 16px rgba(255,26,26,0.25);
     }
 
     .brandName {
-      font-family: var(--hFont);
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 1.1rem;
+      font-family: var(--hFont); font-weight: 900; font-size: 1.1rem;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--red); text-shadow: 0 0 16px rgba(255,26,26,0.6);
     }
 
-    .nav {
-      display: flex;
-      gap: 10px;
-    }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .nav a {
-      text-decoration: none;
-      color: rgba(230,230,235,0.88);
-      font-weight: 800;
-      font-size: 0.9rem;
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(0,255,255,0.1);
+      text-decoration: none; color: rgba(232,224,224,0.8);
+      font-family: var(--monoFont); font-size: 0.72rem; letter-spacing: 0.15em;
+      padding: 9px 14px; border-radius: 12px;
+      background: rgba(0,0,0,0.4); border: 1px solid rgba(255,26,26,0.15);
+      transition: all 0.2s; text-transform: uppercase;
     }
 
+    .nav a:hover { border-color: rgba(255,26,26,0.5); color: var(--red); }
+
+    /* BUTTONS */
     .btn {
-      text-decoration: none;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 900;
-      color: #0b0b0f;
-      background: linear-gradient(135deg, #ff6a00, #ff2a00);
-      box-shadow: 0 0 22px rgba(255,100,0,0.35);
+      display: inline-block; text-decoration: none; padding: 10px 18px; border-radius: 12px;
+      font-family: var(--hFont); font-weight: 800; font-size: 0.68rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.2s;
     }
 
-    .btnOutline {
-      color: rgba(230,230,235,0.92);
-      background: rgba(0,0,0,0.34);
-      border: 1px solid rgba(0,255,255,0.2);
-    }
+    .btnRed { color: #fff; background: linear-gradient(135deg, #ff1a1a, #8b0000); box-shadow: 0 0 20px rgba(255,26,26,0.4); border: 1px solid rgba(255,26,26,0.5); }
+    .btnRed:hover { box-shadow: 0 0 36px rgba(255,26,26,0.7); transform: translateY(-1px); }
 
-    .btnTwitch {
-      background: linear-gradient(135deg, #7a2bff, #ff3fb4);
-      color: #0b0b0f;
-    }
+    .btnOutline { color: rgba(232,224,224,0.9); background: rgba(0,0,0,0.35); border: 1px solid rgba(255,26,26,0.25); }
+    .btnOutline:hover { border-color: rgba(255,26,26,0.6); color: var(--red); }
+
+    .btnPurple { color: #fff; background: linear-gradient(135deg, #7a2bff, #ff3fb4); box-shadow: 0 0 20px rgba(122,43,255,0.3); }
+    .btnPurple:hover { box-shadow: 0 0 36px rgba(122,43,255,0.6); transform: translateY(-1px); }
+
+    .btnGold { color: #0b0000; background: linear-gradient(135deg, #ffd700, #ff9500); box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+    .btnGold:hover { box-shadow: 0 0 36px rgba(255,215,0,0.6); transform: translateY(-1px); }
+
+    .btnDiscord { color: #fff; background: linear-gradient(135deg, #5865F2, #404EED); box-shadow: 0 0 20px rgba(88,101,242,0.35); }
+    .btnDiscord:hover { box-shadow: 0 0 36px rgba(88,101,242,0.6); transform: translateY(-1px); }
+
+    /* TICKER */
+    .tickerWrap { background: rgba(0,0,0,0.6); border: 1px solid var(--red-border); border-radius: 12px; overflow: hidden; padding: 8px 0; }
+    .tickerInner { display: flex; gap: 3rem; animation: tickerMove 28s linear infinite; white-space: nowrap; }
+    .tickerItem { font-family: var(--monoFont); font-size: 0.62rem; letter-spacing: 0.25em; color: rgba(255,26,26,0.45); text-transform: uppercase; flex-shrink: 0; }
+    .tickerItem span { color: var(--red); }
+    @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* HERO */
-    .promoCard {
-      border: 1px solid var(--borderOrange);
-      padding: 14px;
+    .promoCard { border-color: rgba(255,26,26,0.4); padding: 12px; }
+    .promoImg { width: 100%; border-radius: var(--radiusIn); display: block; }
+    .heroText { margin-top: 18px; text-align: center; }
+
+    .heroTitle {
+      font-family: var(--hFont); font-weight: 900; font-size: clamp(2rem, 7vw, 4rem);
+      letter-spacing: 0.06em;
+      background: linear-gradient(135deg, #fff 0%, var(--red) 60%, #8b0000 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 28px rgba(255,26,26,0.45)); line-height: 1;
     }
 
-    .promoImg {
-      width: 100%;
-      border-radius: var(--radiusIn);
-    }
+    .heroSub { font-family: var(--monoFont); font-size: 0.65rem; letter-spacing: 0.45em; color: rgba(232,224,224,0.4); margin-top: 0.6rem; }
+    .heroDivider { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--red), transparent); margin: 1rem auto; }
+    .heroDesc { max-width: 520px; margin: 0 auto; font-size: 0.9rem; line-height: 1.8; color: var(--muted); font-weight: 300; }
+    .heroBtns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
 
-    /* SECTIONS */
-    .sectionHead {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    /* STATS */
+    .statsRow { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 12px; }
+    .stat { text-align: center; flex: 1; min-width: 80px; }
+    .statVal { font-family: var(--hFont); font-size: 1.6rem; font-weight: 900; color: var(--red); text-shadow: 0 0 14px rgba(255,26,26,0.5); }
+    .statLabel { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.25em; color: rgba(232,224,224,0.3); margin-top: 0.15rem; text-transform: uppercase; }
 
-    .sectionTitle {
-      font-family: var(--hFont);
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .zoneCards { border-color: var(--borderOrange); }
-    .zoneTwitch { border-color: var(--borderPurple); }
+    /* SECTION HEADERS */
+    .sectionHead { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .sectionLabel { font-family: var(--monoFont); font-size: 0.58rem; letter-spacing: 0.4em; color: rgba(255,26,26,0.55); text-transform: uppercase; margin-bottom: 4px; }
+    .sectionTitle { font-family: var(--hFont); font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+    .sectionDivider { width: 40px; height: 2px; background: linear-gradient(90deg, var(--red), transparent); margin-top: 6px; }
 
     /* COUNTDOWN */
-    .countdownRow {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
+    .countdownRow { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,26,26,0.12); }
+    .countdownDesc { font-family: var(--monoFont); font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
+    .countdownDesc strong { display: block; color: var(--red); font-family: var(--hFont); font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 3px; }
+    .units { display: flex; gap: 8px; }
+    .unit { min-width: 68px; text-align: center; padding: 10px 8px; border-radius: 12px; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,26,26,0.22); }
+    .num { font-family: var(--hFont); font-size: 1.4rem; font-weight: 900; color: var(--red); text-shadow: 0 0 12px rgba(255,26,26,0.5); }
+    .lbl { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(232,224,224,0.35); margin-top: 2px; }
 
-    .units {
-      display: flex;
-      gap: 10px;
-    }
+    /* CARDS */
+    .cardsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 10px; }
+    .nftCard { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,26,26,0.15); border-radius: 14px; padding: 14px; transition: all 0.25s; cursor: pointer; }
+    .nftCard:hover { border-color: rgba(255,26,26,0.5); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(255,26,26,0.15); }
+    .nftNum { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.3em; color: rgba(255,26,26,0.4); margin-bottom: 4px; }
+    .nftName { font-family: var(--hFont); font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .nftEdition { font-family: var(--monoFont); font-size: 0.6rem; color: rgba(232,224,224,0.4); }
+    .nftPrice { margin-top: 10px; font-family: var(--hFont); font-size: 0.75rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 8px rgba(255,215,0,0.4); }
+    .nftTag { display: inline-block; margin-top: 5px; font-family: var(--monoFont); font-size: 0.5rem; letter-spacing: 0.2em; padding: 2px 7px; border-radius: 5px; border: 1px solid rgba(255,26,26,0.25); color: var(--red); text-transform: uppercase; }
+    .nftTag.rare { border-color: rgba(255,215,0,0.3); color: var(--gold); }
+    .nftTag.special { border-color: rgba(255,215,0,0.4); color: var(--gold); }
 
-    .unit {
-      min-width: 92px;
-      text-align: center;
-      padding: 10px;
-      border-radius: 14px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(0,255,255,0.22);
-    }
+    /* TIERS */
+    .tiersGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 560px) { .tiersGrid { grid-template-columns: 1fr; } }
+    .tierCard { background: rgba(0,0,0,0.5); border: 1px solid var(--red-border); border-radius: 14px; padding: 20px; transition: all 0.25s; }
+    .tierCard.premium { border-color: rgba(255,215,0,0.25); }
+    .tierCard:hover { transform: translateY(-3px); }
+    .tierMini { font-family: var(--monoFont); font-size: 0.58rem; letter-spacing: 0.35em; margin-bottom: 4px; text-transform: uppercase; color: var(--red); }
+    .tierMini.prm { color: var(--gold); }
+    .tierName { font-family: var(--hFont); font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .tierPrice { font-family: var(--hFont); font-size: 1.8rem; font-weight: 900; margin-bottom: 3px; color: var(--red); text-shadow: 0 0 14px rgba(255,26,26,0.4); }
+    .tierPrice.prm { color: var(--gold); text-shadow: 0 0 14px rgba(255,215,0,0.4); }
+    .tierSupply { font-family: var(--monoFont); font-size: 0.62rem; color: rgba(232,224,224,0.35); margin-bottom: 14px; }
+    .tierFeats { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+    .tierFeats li { font-family: var(--monoFont); font-size: 0.65rem; letter-spacing: 0.08em; color: rgba(232,224,224,0.6); display: flex; align-items: center; gap: 6px; }
+    .tierFeats li::before { content: '▸'; color: var(--red); font-size: 0.5rem; }
+    .tierCard.premium .tierFeats li::before { color: var(--gold); }
 
-    .num {
-      font-size: 1.4rem;
-      font-weight: 900;
-    }
+    /* ROSTER */
+    .rosterNote { font-family: var(--monoFont); font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,26,26,0.5); border: 1px solid rgba(255,26,26,0.15); border-radius: 10px; padding: 8px 14px; margin-bottom: 14px; background: rgba(255,26,26,0.04); }
+    .rosterGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+    .charCard { background: rgba(0,0,0,0.5); border-left: 2px solid var(--red); border-radius: 0 10px 10px 0; padding: 14px 14px 14px 18px; position: relative; transition: all 0.25s; }
+    .charCard::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px; background: var(--red); box-shadow: 0 0 8px var(--red); border-radius: 2px; }
+    .charCard:hover { background: rgba(255,26,26,0.04); transform: translateX(3px); }
+    .charCallsign { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.4em; color: rgba(255,26,26,0.55); margin-bottom: 4px; text-transform: uppercase; }
+    .charName { font-family: var(--hFont); font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+    .charDesc { font-size: 0.8rem; color: rgba(232,224,224,0.5); line-height: 1.6; font-weight: 300; }
+    .charThreat { margin-top: 8px; display: flex; align-items: center; gap: 6px; font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(232,224,224,0.3); text-transform: uppercase; }
+    .threatDots { display: flex; gap: 3px; }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,26,26,0.15); }
+    .dot.on { background: var(--red); box-shadow: 0 0 5px var(--red); }
 
-    .lbl {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
+    /* TWITCH */
+    .twitchInner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .liveBadge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--monoFont); font-size: 0.6rem; letter-spacing: 0.2em; color: #ff4040; text-transform: uppercase; margin-bottom: 6px; }
+    .liveDot { width: 6px; height: 6px; border-radius: 50%; background: #ff4040; box-shadow: 0 0 6px #ff4040; animation: blink 1.2s ease-in-out infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    .footer {
-      text-align: center;
-      opacity: 0.6;
-      font-size: 0.85rem;
-    }
+    /* SOCIALS */
+    .socialsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+    .socialLink { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,26,26,0.15); border-radius: 12px; text-decoration: none; transition: all 0.25s; }
+    .socialLink:hover { border-color: rgba(255,26,26,0.45); background: rgba(255,26,26,0.04); transform: translateY(-2px); }
+    .socialIcon { font-size: 1.3rem; width: 2rem; text-align: center; }
+    .socialPlatform { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.3em; color: rgba(255,26,26,0.55); text-transform: uppercase; }
+    .socialHandle { font-family: var(--hFont); font-size: 0.72rem; font-weight: 700; color: #fff; margin-top: 2px; }
+
+    /* FOOTER */
+    .footer { text-align: center; font-family: var(--monoFont); font-size: 0.6rem; letter-spacing: 0.3em; color: rgba(232,224,224,0.2); text-transform: uppercase; padding-top: 8px; }
+    .footerLogo { font-family: var(--hFont); font-size: 1rem; font-weight: 900; letter-spacing: 0.3em; color: var(--red); text-shadow: 0 0 16px rgba(255,26,26,0.5); margin-bottom: 6px; }
   </style>
 </head>
-
 <body>
 <div class="veil"></div>
 
@@ -228,68 +257,257 @@
       <img class="logo" src="Logo.png" alt="Shadow23-V Logo" onerror="this.style.display='none'">
       <div class="brandName">Shadow23-V</div>
     </div>
-
     <nav class="nav">
       <a href="#cards">ShadowCards</a>
+      <a href="#roster">Roster</a>
+      <a href="#tiers">Tiers</a>
       <a href="#twitch">Twitch</a>
+      <a href="#connect">Connect</a>
     </nav>
-
-    <a class="btn" href="#cards">Explore Cards</a>
+    <a class="btn btnRed" href="https://opensea.io/collection/shadowcards" target="_blank">Collect Now</a>
   </section>
+
+  <!-- TICKER -->
+  <div class="tickerWrap">
+    <div class="tickerInner">
+      <span class="tickerItem">SHADOW23-V · <span>STORM DIVISION</span></span>
+      <span class="tickerItem">SHADOWCARDS · <span>9 UNIQUE CARDS</span></span>
+      <span class="tickerItem">FLOOR: <span>0.05 AVAX</span></span>
+      <span class="tickerItem">PREMIUM: <span>0.10 AVAX · MINTING NOW</span></span>
+      <span class="tickerItem">SHADOW23-V · <span>BIRTHDAY EDITION 2026</span></span>
+      <span class="tickerItem">TOTAL VOLUME: <span>1.03 AVAX</span></span>
+      <span class="tickerItem">SHADOW23-V · <span>STORM DIVISION</span></span>
+      <span class="tickerItem">SHADOWCARDS · <span>9 UNIQUE CARDS</span></span>
+      <span class="tickerItem">FLOOR: <span>0.05 AVAX</span></span>
+      <span class="tickerItem">PREMIUM: <span>0.10 AVAX · MINTING NOW</span></span>
+      <span class="tickerItem">SHADOW23-V · <span>BIRTHDAY EDITION 2026</span></span>
+      <span class="tickerItem">TOTAL VOLUME: <span>1.03 AVAX</span></span>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="panel promoCard">
-    <img class="promoImg" src="promo.png" alt="Shadow23-V Promo">
+    <img class="promoImg" src="promo.png" alt="Shadow23-V Promo" onerror="this.style.display='none'">
+    <div class="heroText">
+      <div class="heroTitle">SHADOW23-V</div>
+      <div class="heroSub">STREAMER · NFT CREATOR · STORM DIVISION</div>
+      <div class="heroDivider"></div>
+      <p class="heroDesc">Creator of ShadowCards — a digital collectible series inspired by the members of STORM. Stream. Collect. Represent.</p>
+      <div class="heroBtns">
+        <a href="https://opensea.io/collection/shadowcards" target="_blank" class="btn btnRed">Collect Cards</a>
+        <a href="https://opensea.io/collection/shadow-cards-premium/overview" target="_blank" class="btn btnGold">⚡ Premium Mint</a>
+        <a href="https://www.twitch.tv/shadow23v" target="_blank" class="btn btnPurple">Watch Live</a>
+        <a href="https://discord.gg/48SQAghg" target="_blank" class="btn btnDiscord">Join STORM</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="panel">
+    <div class="statsRow">
+      <div class="stat"><div class="statVal">9</div><div class="statLabel">Unique Cards</div></div>
+      <div class="stat"><div class="statVal">121</div><div class="statLabel">Total Minted</div></div>
+      <div class="stat"><div class="statVal">0.05</div><div class="statLabel">Floor AVAX</div></div>
+      <div class="stat"><div class="statVal">7</div><div class="statLabel">Unique Owners</div></div>
+      <div class="stat"><div class="statVal">1.03</div><div class="statLabel">Total Volume</div></div>
+      <div class="stat"><div class="statVal">5</div><div class="statLabel">Premium Supply</div></div>
+    </div>
   </section>
 
   <!-- SHADOWCARDS -->
-  <section class="panel zoneCards" id="cards">
+  <section class="panel" id="cards">
     <div class="sectionHead">
-      <h3 class="sectionTitle">ShadowCards</h3>
-
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <a class="btn"
-           href="https://opensea.io/collection/shadowcards"
-           target="_blank">
-          OpenSea Collection
-        </a>
-
-        <a class="btn btnOutline"
-           href="https://opensea.io/item/avalanche/0x2db242c6b4e9abe6d88530370bba54e7eab4eaf4/4"
-           target="_blank">
-          Latest Release
-        </a>
+      <div>
+        <div class="sectionLabel">// shadowcards.collection</div>
+        <div class="sectionTitle">ShadowCards</div>
+        <div class="sectionDivider"></div>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <a class="btn btnRed" href="https://opensea.io/collection/shadowcards" target="_blank">OpenSea</a>
+        <a class="btn btnOutline" href="https://opensea.io/collection/shadow-cards-premium/overview" target="_blank">⚡ Premium</a>
       </div>
     </div>
 
-    <div class="countdownRow">
-      <div>
-        <strong>Next ShadowCards Drop</strong><br>
-        Drops every Monday at 12:00 AM (local time)
-      </div>
+    <div class="cardsGrid">
+      <div class="nftCard"><div class="nftNum">#001</div><div class="nftName">THE SHADOW</div><div class="nftEdition">25 Editions</div><div class="nftPrice">0.05 AVAX</div><span class="nftTag">Standard</span></div>
+      <div class="nftCard"><div class="nftNum">#002</div><div class="nftName">THE SMOKE</div><div class="nftEdition">15 Editions</div><div class="nftPrice">0.06 AVAX</div><span class="nftTag">Standard</span></div>
+      <div class="nftCard"><div class="nftNum">#003</div><div class="nftName">THE SMOKE 2.0</div><div class="nftEdition">5 Editions</div><div class="nftPrice">Last: 0.085 AVAX</div><span class="nftTag rare">Rare</span></div>
+      <div class="nftCard"><div class="nftNum">#004</div><div class="nftName">THE WOLF</div><div class="nftEdition">15 Editions</div><div class="nftPrice">0.06 AVAX</div><span class="nftTag">Standard</span></div>
+      <div class="nftCard"><div class="nftNum">#005</div><div class="nftName">THE TECHNICIAN</div><div class="nftEdition">15 Editions</div><div class="nftPrice">0.05 AVAX</div><span class="nftTag">Standard</span></div>
+      <div class="nftCard"><div class="nftNum">#006</div><div class="nftName">THE SPECIALIST</div><div class="nftEdition">15 Editions</div><div class="nftPrice">0.05 AVAX</div><span class="nftTag">Standard</span></div>
+      <div class="nftCard"><div class="nftNum">#007</div><div class="nftName">THE SCOUT</div><div class="nftEdition">15 Editions</div><div class="nftPrice">0.05 AVAX</div><span class="nftTag">Standard</span></div>
+      <div class="nftCard"><div class="nftNum">#008</div><div class="nftName">THE SHIELD</div><div class="nftEdition">15 Editions</div><div class="nftPrice">0.05 AVAX</div><span class="nftTag">Standard</span></div>
+      <div class="nftCard"><div class="nftNum">#010</div><div class="nftName">SHADOW23-V</div><div class="nftEdition">Birthday Edition 2026</div><div class="nftPrice">Not Listed</div><span class="nftTag special">⚡ Special</span></div>
+    </div>
 
+    <div class="countdownRow">
+      <div class="countdownDesc">
+        <strong>Next ShadowCards Drop</strong>
+        Drops every Monday at 12:00 AM local time
+      </div>
       <div class="units">
         <div class="unit"><div class="num" id="d">--</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="h">--</div><div class="lbl">Hours</div></div>
-        <div class="unit"><div class="num" id="m">--</div><div class="lbl">Minutes</div></div>
-        <div class="unit"><div class="num" id="s">--</div><div class="lbl">Seconds</div></div>
+        <div class="unit"><div class="num" id="m">--</div><div class="lbl">Mins</div></div>
+        <div class="unit"><div class="num" id="s">--</div><div class="lbl">Secs</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section class="panel" id="tiers">
+    <div class="sectionHead">
+      <div>
+        <div class="sectionLabel">// access.tiers</div>
+        <div class="sectionTitle">Collection Tiers</div>
+        <div class="sectionDivider"></div>
+      </div>
+    </div>
+    <div class="tiersGrid">
+      <div class="tierCard">
+        <div class="tierMini">Tier 01 · Standard</div>
+        <div class="tierName">ShadowCards</div>
+        <div class="tierPrice">0.05 AVAX</div>
+        <div class="tierSupply">121 Total Supply · 9 Unique Cards</div>
+        <ul class="tierFeats">
+          <li>Full STORM-inspired roster</li>
+          <li>Trait-based rarity system</li>
+          <li>Avalanche blockchain</li>
+          <li>Tradeable on OpenSea</li>
+          <li>Gaming category</li>
+        </ul>
+        <a href="https://opensea.io/collection/shadowcards" target="_blank" class="btn btnRed">View Collection</a>
+      </div>
+      <div class="tierCard premium">
+        <div class="tierMini prm">Tier 02 · Premium</div>
+        <div class="tierName">Shadow Cards PREMIUM</div>
+        <div class="tierPrice prm">0.10 AVAX</div>
+        <div class="tierSupply">5 Total Supply · 1 per Wallet · Minting Now</div>
+        <ul class="tierFeats">
+          <li>Ultra-limited (5 total)</li>
+          <li>Animated card format</li>
+          <li>Exclusive holder status</li>
+          <li>Maximum scarcity</li>
+          <li>1 of 5 already claimed</li>
+        </ul>
+        <a href="https://opensea.io/collection/shadow-cards-premium/overview" target="_blank" class="btn btnGold">Mint Premium</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROSTER -->
+  <section class="panel" id="roster">
+    <div class="sectionHead">
+      <div>
+        <div class="sectionLabel">// storm.roster</div>
+        <div class="sectionTitle">STORM Roster</div>
+        <div class="sectionDivider"></div>
+      </div>
+      <a href="https://discord.gg/48SQAghg" target="_blank" class="btn btnDiscord">Join STORM</a>
+    </div>
+    <div class="rosterNote">⚡ Current cardholders only — the full STORM roster is larger. More cards coming.</div>
+    <div class="rosterGrid">
+      <div class="charCard">
+        <div class="charCallsign">Callsign · Shadow23-V</div>
+        <div class="charName">Shadow23-V</div>
+        <div class="charDesc">Creator of ShadowCards. The architect behind STORM's digital identity.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      </div>
+      <div class="charCard">
+        <div class="charCallsign">Callsign · EASTN7</div>
+        <div class="charName">EASTN7</div>
+        <div class="charDesc">Reconnaissance and eastern corridor specialist. First in, last out.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="charCard">
+        <div class="charCallsign">Callsign · Smoke</div>
+        <div class="charName">Smoke</div>
+        <div class="charDesc">Infiltration and disruption. Moves through systems like vapor.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="charCard">
+        <div class="charCallsign">Callsign · Wolf</div>
+        <div class="charName">Wolf</div>
+        <div class="charDesc">Hunter. Tracker. Patient beyond measure. Once Wolf has your scent, there is no sanctuary.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="charCard">
+        <div class="charCallsign">Callsign · Technician</div>
+        <div class="charName">The Technician</div>
+        <div class="charDesc">No system is secure. No lock is permanent. He's already inside.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="charCard">
+        <div class="charCallsign">Callsign · Specialist</div>
+        <div class="charName">The Specialist</div>
+        <div class="charDesc">One mission. One target. Zero margin for error.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="charCard">
+        <div class="charCallsign">Callsign · Scout</div>
+        <div class="charName">The Scout</div>
+        <div class="charDesc">Eyes everywhere. Nothing moves in STORM territory without The Scout knowing first.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="charCard">
+        <div class="charCallsign">Callsign · Shield</div>
+        <div class="charName">The Shield</div>
+        <div class="charDesc">Defense. Protection. The line between STORM and everything that threatens it.</div>
+        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
       </div>
     </div>
   </section>
 
   <!-- TWITCH -->
-  <section class="panel zoneTwitch" id="twitch">
+  <section class="panel" id="twitch" style="border-color: rgba(122,43,255,0.3);">
+    <div class="twitchInner">
+      <div>
+        <div class="liveBadge"><div class="liveDot"></div> Live on Twitch</div>
+        <div class="sectionTitle">shadow23v</div>
+        <div style="font-family:var(--monoFont); font-size:0.7rem; color:var(--muted); margin-top:6px; letter-spacing:0.1em;">Tune in for drops, gaming, and STORM division activity.</div>
+      </div>
+      <a class="btn btnPurple" href="https://www.twitch.tv/shadow23v" target="_blank">Watch on Twitch</a>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="panel" id="connect">
     <div class="sectionHead">
-      <h3 class="sectionTitle">Twitch</h3>
-      <a class="btn btnTwitch"
-         href="https://www.twitch.tv/shadow23v"
-         target="_blank">
-        Watch on Twitch
+      <div>
+        <div class="sectionLabel">// network.links</div>
+        <div class="sectionTitle">Connect</div>
+        <div class="sectionDivider"></div>
+      </div>
+    </div>
+    <div class="socialsGrid">
+      <a href="https://opensea.io/collection/shadowcards" target="_blank" class="socialLink">
+        <div class="socialIcon">🌊</div>
+        <div><div class="socialPlatform">OpenSea · Standard</div><div class="socialHandle">ShadowCards</div></div>
+      </a>
+      <a href="https://opensea.io/collection/shadow-cards-premium/overview" target="_blank" class="socialLink">
+        <div class="socialIcon">⚡</div>
+        <div><div class="socialPlatform">OpenSea · Premium</div><div class="socialHandle">Shadow Cards-PREMIUM</div></div>
+      </a>
+      <a href="https://www.twitch.tv/shadow23v" target="_blank" class="socialLink">
+        <div class="socialIcon">📡</div>
+        <div><div class="socialPlatform">Twitch · Live</div><div class="socialHandle">shadow23v</div></div>
+      </a>
+      <a href="https://x.com/Flame436" target="_blank" class="socialLink">
+        <div class="socialIcon">✕</div>
+        <div><div class="socialPlatform">X · Updates</div><div class="socialHandle">@Flame436</div></div>
+      </a>
+      <a href="https://discord.gg/48SQAghg" target="_blank" class="socialLink">
+        <div class="socialIcon">💬</div>
+        <div><div class="socialPlatform">Discord · Community</div><div class="socialHandle">Join STORM</div></div>
       </a>
     </div>
   </section>
 
-  <div class="footer">© <span id="year"></span> Shadow23-V</div>
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footerLogo">SHADOW23-V</div>
+    <div>Storm Division · Avalanche Network · © <span id="year"></span> Shadow23-V</div>
+  </div>
 
 </main>
 
@@ -300,25 +518,21 @@
     const diff = (8 - day) % 7 || 7;
     const d = new Date(now);
     d.setDate(now.getDate() + diff);
-    d.setHours(0,0,0,0);
+    d.setHours(0, 0, 0, 0);
     return d;
   }
-
-  function pad(n){ return String(n).padStart(2,"0"); }
-
-  function tick(){
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function tick() {
     const diff = nextMonday() - new Date();
-    const t = Math.max(0, Math.floor(diff/1000));
-    document.getElementById("d").textContent = Math.floor(t/86400);
-    document.getElementById("h").textContent = pad(Math.floor((t%86400)/3600));
-    document.getElementById("m").textContent = pad(Math.floor((t%3600)/60));
-    document.getElementById("s").textContent = pad(t%60);
+    const t = Math.max(0, Math.floor(diff / 1000));
+    document.getElementById("d").textContent = Math.floor(t / 86400);
+    document.getElementById("h").textContent = pad(Math.floor((t % 86400) / 3600));
+    document.getElementById("m").textContent = pad(Math.floor((t % 3600) / 60));
+    document.getElementById("s").textContent = pad(t % 60);
   }
-
   document.getElementById("year").textContent = new Date().getFullYear();
   tick();
-  setInterval(tick,1000);
+  setInterval(tick, 1000);
 </script>
-
 </body>
 </html>
