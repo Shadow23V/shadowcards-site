@@ -88,7 +88,6 @@
       box-shadow: 0 14px 60px rgba(0,0,0,0.7);
     }
 
-    /* NAV */
     .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .brandRow { display: flex; align-items: center; gap: 12px; }
 
@@ -116,7 +115,6 @@
 
     .nav a:hover { border-color: rgba(255,26,26,0.5); color: var(--red); }
 
-    /* BUTTONS */
     .btn {
       display: inline-block; text-decoration: none; padding: 10px 18px; border-radius: 12px;
       font-family: var(--hFont); font-weight: 800; font-size: 0.68rem;
@@ -138,14 +136,12 @@
     .btnDiscord { color: #fff; background: linear-gradient(135deg, #5865F2, #404EED); box-shadow: 0 0 20px rgba(88,101,242,0.35); }
     .btnDiscord:hover { box-shadow: 0 0 36px rgba(88,101,242,0.6); transform: translateY(-1px); }
 
-    /* TICKER */
     .tickerWrap { background: rgba(0,0,0,0.6); border: 1px solid var(--red-border); border-radius: 12px; overflow: hidden; padding: 8px 0; }
     .tickerInner { display: flex; gap: 3rem; animation: tickerMove 28s linear infinite; white-space: nowrap; }
     .tickerItem { font-family: var(--monoFont); font-size: 0.62rem; letter-spacing: 0.25em; color: rgba(255,26,26,0.45); text-transform: uppercase; flex-shrink: 0; }
     .tickerItem span { color: var(--red); }
     @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* HERO */
     .promoCard { border-color: rgba(255,26,26,0.4); padding: 12px; }
     .promoImg { width: 100%; border-radius: var(--radiusIn); display: block; }
     .heroText { margin-top: 18px; text-align: center; }
@@ -163,19 +159,16 @@
     .heroDesc { max-width: 520px; margin: 0 auto; font-size: 0.9rem; line-height: 1.8; color: var(--muted); font-weight: 300; }
     .heroBtns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
 
-    /* STATS */
     .statsRow { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 12px; }
     .stat { text-align: center; flex: 1; min-width: 80px; }
     .statVal { font-family: var(--hFont); font-size: 1.6rem; font-weight: 900; color: var(--red); text-shadow: 0 0 14px rgba(255,26,26,0.5); }
     .statLabel { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.25em; color: rgba(232,224,224,0.3); margin-top: 0.15rem; text-transform: uppercase; }
 
-    /* SECTION HEADERS */
     .sectionHead { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
     .sectionLabel { font-family: var(--monoFont); font-size: 0.58rem; letter-spacing: 0.4em; color: rgba(255,26,26,0.55); text-transform: uppercase; margin-bottom: 4px; }
     .sectionTitle { font-family: var(--hFont); font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
     .sectionDivider { width: 40px; height: 2px; background: linear-gradient(90deg, var(--red), transparent); margin-top: 6px; }
 
-    /* COUNTDOWN */
     .countdownRow { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,26,26,0.12); }
     .countdownDesc { font-family: var(--monoFont); font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
     .countdownDesc strong { display: block; color: var(--red); font-family: var(--hFont); font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 3px; }
@@ -184,7 +177,6 @@
     .num { font-family: var(--hFont); font-size: 1.4rem; font-weight: 900; color: var(--red); text-shadow: 0 0 12px rgba(255,26,26,0.5); }
     .lbl { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(232,224,224,0.35); margin-top: 2px; }
 
-    /* CARDS */
     .cardsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 10px; }
     .nftCard { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,26,26,0.15); border-radius: 14px; padding: 14px; transition: all 0.25s; cursor: pointer; }
     .nftCard:hover { border-color: rgba(255,26,26,0.5); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(255,26,26,0.15); }
@@ -196,7 +188,6 @@
     .nftTag.rare { border-color: rgba(255,215,0,0.3); color: var(--gold); }
     .nftTag.special { border-color: rgba(255,215,0,0.4); color: var(--gold); }
 
-    /* TIERS */
     .tiersGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media (max-width: 560px) { .tiersGrid { grid-template-columns: 1fr; } }
     .tierCard { background: rgba(0,0,0,0.5); border: 1px solid var(--red-border); border-radius: 14px; padding: 20px; transition: all 0.25s; }
@@ -213,7 +204,6 @@
     .tierFeats li::before { content: '▸'; color: var(--red); font-size: 0.5rem; }
     .tierCard.premium .tierFeats li::before { color: var(--gold); }
 
-    /* ROSTER */
     .rosterNote { font-family: var(--monoFont); font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,26,26,0.5); border: 1px solid rgba(255,26,26,0.15); border-radius: 10px; padding: 8px 14px; margin-bottom: 14px; background: rgba(255,26,26,0.04); }
     .rosterGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
     .charCard { background: rgba(0,0,0,0.5); border-left: 2px solid var(--red); border-radius: 0 10px 10px 0; padding: 14px 14px 14px 18px; position: relative; transition: all 0.25s; }
@@ -222,18 +212,12 @@
     .charCallsign { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.4em; color: rgba(255,26,26,0.55); margin-bottom: 4px; text-transform: uppercase; }
     .charName { font-family: var(--hFont); font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
     .charDesc { font-size: 0.8rem; color: rgba(232,224,224,0.5); line-height: 1.6; font-weight: 300; }
-    .charThreat { margin-top: 8px; display: flex; align-items: center; gap: 6px; font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(232,224,224,0.3); text-transform: uppercase; }
-    .threatDots { display: flex; gap: 3px; }
-    .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,26,26,0.15); }
-    .dot.on { background: var(--red); box-shadow: 0 0 5px var(--red); }
 
-    /* TWITCH */
     .twitchInner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
     .liveBadge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--monoFont); font-size: 0.6rem; letter-spacing: 0.2em; color: #ff4040; text-transform: uppercase; margin-bottom: 6px; }
     .liveDot { width: 6px; height: 6px; border-radius: 50%; background: #ff4040; box-shadow: 0 0 6px #ff4040; animation: blink 1.2s ease-in-out infinite; }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    /* SOCIALS */
     .socialsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
     .socialLink { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,26,26,0.15); border-radius: 12px; text-decoration: none; transition: all 0.25s; }
     .socialLink:hover { border-color: rgba(255,26,26,0.45); background: rgba(255,26,26,0.04); transform: translateY(-2px); }
@@ -241,7 +225,6 @@
     .socialPlatform { font-family: var(--monoFont); font-size: 0.55rem; letter-spacing: 0.3em; color: rgba(255,26,26,0.55); text-transform: uppercase; }
     .socialHandle { font-family: var(--hFont); font-size: 0.72rem; font-weight: 700; color: #fff; margin-top: 2px; }
 
-    /* FOOTER */
     .footer { text-align: center; font-family: var(--monoFont); font-size: 0.6rem; letter-spacing: 0.3em; color: rgba(232,224,224,0.2); text-transform: uppercase; padding-top: 8px; }
     .footerLogo { font-family: var(--hFont); font-size: 1rem; font-weight: 900; letter-spacing: 0.3em; color: var(--red); text-shadow: 0 0 16px rgba(255,26,26,0.5); margin-bottom: 6px; }
   </style>
@@ -251,7 +234,6 @@
 
 <main class="wrap">
 
-  <!-- TOP BAR -->
   <section class="panel topbar">
     <div class="brandRow">
       <img class="logo" src="Logo.png" alt="Shadow23-V Logo" onerror="this.style.display='none'">
@@ -267,7 +249,6 @@
     <a class="btn btnRed" href="https://opensea.io/collection/shadowcards" target="_blank">Collect Now</a>
   </section>
 
-  <!-- TICKER -->
   <div class="tickerWrap">
     <div class="tickerInner">
       <span class="tickerItem">SHADOW23-V · <span>STORM DIVISION</span></span>
@@ -285,7 +266,6 @@
     </div>
   </div>
 
-  <!-- HERO -->
   <section class="panel promoCard">
     <img class="promoImg" src="promo.png" alt="Shadow23-V Promo" onerror="this.style.display='none'">
     <div class="heroText">
@@ -302,7 +282,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <section class="panel">
     <div class="statsRow">
       <div class="stat"><div class="statVal">9</div><div class="statLabel">Unique Cards</div></div>
@@ -314,7 +293,6 @@
     </div>
   </section>
 
-  <!-- SHADOWCARDS -->
   <section class="panel" id="cards">
     <div class="sectionHead">
       <div>
@@ -354,7 +332,6 @@
     </div>
   </section>
 
-  <!-- TIERS -->
   <section class="panel" id="tiers">
     <div class="sectionHead">
       <div>
@@ -395,7 +372,6 @@
     </div>
   </section>
 
-  <!-- ROSTER -->
   <section class="panel" id="roster">
     <div class="sectionHead">
       <div>
@@ -411,54 +387,45 @@
         <div class="charCallsign">Callsign · Shadow23-V</div>
         <div class="charName">Shadow23-V</div>
         <div class="charDesc">Creator of ShadowCards. The architect behind STORM's digital identity.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
       </div>
       <div class="charCard">
         <div class="charCallsign">Callsign · EASTN7</div>
         <div class="charName">EASTN7</div>
         <div class="charDesc">Reconnaissance and eastern corridor specialist. First in, last out.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
       </div>
       <div class="charCard">
         <div class="charCallsign">Callsign · Smoke</div>
         <div class="charName">Smoke</div>
         <div class="charDesc">Infiltration and disruption. Moves through systems like vapor.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
       </div>
       <div class="charCard">
         <div class="charCallsign">Callsign · Wolf</div>
         <div class="charName">Wolf</div>
         <div class="charDesc">Hunter. Tracker. Patient beyond measure. Once Wolf has your scent, there is no sanctuary.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
       </div>
       <div class="charCard">
         <div class="charCallsign">Callsign · Technician</div>
         <div class="charName">The Technician</div>
         <div class="charDesc">No system is secure. No lock is permanent. He's already inside.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
       </div>
       <div class="charCard">
         <div class="charCallsign">Callsign · Specialist</div>
         <div class="charName">The Specialist</div>
         <div class="charDesc">One mission. One target. Zero margin for error.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
       </div>
       <div class="charCard">
         <div class="charCallsign">Callsign · Scout</div>
         <div class="charName">The Scout</div>
         <div class="charDesc">Eyes everywhere. Nothing moves in STORM territory without The Scout knowing first.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div>
       </div>
       <div class="charCard">
         <div class="charCallsign">Callsign · Shield</div>
         <div class="charName">The Shield</div>
         <div class="charDesc">Defense. Protection. The line between STORM and everything that threatens it.</div>
-        <div class="charThreat">Threat <div class="threatDots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- TWITCH -->
   <section class="panel" id="twitch" style="border-color: rgba(122,43,255,0.3);">
     <div class="twitchInner">
       <div>
@@ -470,7 +437,6 @@
     </div>
   </section>
 
-  <!-- CONNECT -->
   <section class="panel" id="connect">
     <div class="sectionHead">
       <div>
@@ -503,7 +469,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div class="footerLogo">SHADOW23-V</div>
     <div>Storm Division · Avalanche Network · © <span id="year"></span> Shadow23-V</div>
